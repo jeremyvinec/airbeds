@@ -1,7 +1,22 @@
 import React, { Component } from 'react';
-import { ReactiveBase, DateRange, NumberBox, RangeSlider  } from '@appbaseio/reactivesearch';
+import { ReactiveBase, DateRange, NumberBox, RangeSlider, ResultCard   } from '@appbaseio/reactivesearch';
 
 class App extends Component {
+
+  onData(data) {
+    return{
+      image: data.image,
+      title: data.title,
+      description: (
+        <div>
+          <div className='price'>${data.proce}</div>
+          <p className="info">{data.room_type} · {data.accommodates} guests</p>
+        </div>
+      ),
+      url: data.listing_url,
+    };
+  }
+  
   render() {
     return (
       <section className="container">
@@ -47,6 +62,17 @@ class App extends Component {
             stepValue={10}
             react={{
                 and: ["DateRangeSensor"]
+            }}
+          />
+          <ResultCard
+            componentId="SearchResult"
+            dataField="name"
+            from={0}
+            size={10}
+            onData={this.onData}
+            pagination={true}
+            react={{
+                and: ["GuestSensor", "PriceSensor", "DateRangeSensor"]
             }}
           />
         </ReactiveBase>
