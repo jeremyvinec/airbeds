@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ReactiveBase, DateRange, NumberBox  } from '@appbaseio/reactivesearch';
+import { ReactiveBase, DateRange, NumberBox, RangeSlider  } from '@appbaseio/reactivesearch';
 
 class App extends Component {
   render() {
@@ -26,6 +26,27 @@ class App extends Component {
             data={{
                 start: 1,
                 end: 16
+            }}
+          />
+          <RangeSlider
+            componentId="PriceSensor"
+            dataField="price"
+            title="Price Range"
+            range={{
+                start: 10,
+                end: 250
+            }}
+            rangeLabels={{
+                start: "$10",
+                end: "$250"
+            }}
+            defaultSelected={{
+                start: 10,
+                end: 50
+            }}
+            stepValue={10}
+            react={{
+                and: ["DateRangeSensor"]
             }}
           />
         </ReactiveBase>
