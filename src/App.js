@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { ReactiveBase, DateRange } from '@appbaseio/reactivesearch';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+class App extends Component {
+  render() {
+    return (
+      <section className="container">
+        <ReactiveBase
+          app="housing"
+          credentials="0aL1X5Vts:1ee67be1-9195-4f4b-bd4f-a91cd1b5e4b5"
+          type="listing"
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          Hello from ReactiveSearch!
+        </ReactiveBase>
+      </section>
+    );
+  }
 }
-
 export default App;
